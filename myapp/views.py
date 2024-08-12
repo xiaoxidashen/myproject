@@ -42,9 +42,7 @@ class SignInView(views.APIView):
         request_data = json.loads(request.body)
         email = request_data.get('email', '')
         password = request_data.get('password', '')
-        print(email, password)
         user = authenticate(email=email, password=password)
-        print(user)
         if user is not None:
             refresh = RefreshToken.for_user(user)
             return Response({
